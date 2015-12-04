@@ -1,0 +1,10 @@
+function init()
+	Cm := 0x5A827999;
+	Mm := 0x6ED9EBA1;
+	// Magma automatically cast those 16 based number into integers.
+	// so after the return if you need the number in hex form you have to
+	// write Cr:Hex or Mm:Hex
+	Cr := 19;
+	Mr := 17;
+	return Cm,Mm,Cr,Mr;
+end function;
