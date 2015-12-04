@@ -9,7 +9,7 @@ Qi := function(BETA,i) // BETA 128 bit long
 	F<x> := GF(2,32);
 	A := ElementToSequence(F!A);
 	B := ElementToSequence(F!B);
-	C := ElementToSequence(F!C);git 
+	C := ElementToSequence(F!C); 
 	D := ElementToSequence(F!D);
 
 	C := C + f1(D,Kr0[i],Km0[i]);
