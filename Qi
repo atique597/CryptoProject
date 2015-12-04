@@ -1,5 +1,8 @@
-Qi := function(BETA,i) // BETA 128 bit long
+Qi := function(BETA,i,Kr,Km) // BETA 128 bit long
 	// forward quad round
+
+	Kr0 := Kr[1]; Kr1 := Kr[2]; Kr2 := Kr[3]; Kr3 := Kr[4];
+	Km0 := Kr[1]; Km1 := Km[2]; Km2 := Km[3]; Km3 := Km[4];
 
 	A := BETA[1..32];
 	B := BETA[33..64];
@@ -9,13 +12,13 @@ Qi := function(BETA,i) // BETA 128 bit long
 	F<x> := GF(2,32);
 	A := ElementToSequence(F!A);
 	B := ElementToSequence(F!B);
-	C := ElementToSequence(F!C);git 
+	C := ElementToSequence(F!C);
 	D := ElementToSequence(F!D);
 
-	C := C + f1(D,Kr0[i],Km0[i]);
-	B := B + f2(C,Kr1[i],Km1[i]);
-	A := A + f3(B,Kr2[i],Km2[i]);
-	D := D + f1(A,Kr3[i],Km3[i]);
+	C := C + f1(D,Kr0,Km0);
+	B := B + f2(C,Kr1,Km1);
+	A := A + f3(B,Kr2,Km2);
+	D := D + f1(A,Kr3,Km3);
 
 	return A cat B cat C cat D;
 
