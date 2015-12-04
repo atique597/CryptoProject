@@ -1,0 +1,22 @@
+Qi := function(BETA,i) // BETA 128 bit long
+	// forward quad round
+
+	A := BETA[1..32];
+	B := BETA[33..64];
+	C := BETA[65..96];
+	D := BETA[97..128];
+
+	F<x> := GF(2,32);
+	A := ElementToSequence(F!A);
+	B := ElementToSequence(F!B);
+	C := ElementToSequence(F!C);git 
+	D := ElementToSequence(F!D);
+
+	C := C + f1(D,Kr0[i],Km0[i]);
+	B := B + f2(C,Kr1[i],Km1[i]);
+	A := A + f3(B,Kr2[i],Km2[i]);
+	D := D + f1(A,Kr3[i],Km3[i]);
+
+	return A cat B cat C cat D;
+
+end function;

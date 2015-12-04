@@ -1,0 +1,19 @@
+defineKeys := function(A,B,C,D,E,F,G,H)
+
+	// check if these are LSB or MSB
+	Kr0 := A[1..5];
+	Kr1 := C[1..5];
+	Kr2 := E[1..5];
+	Kr3 := G[1..5];
+
+	Km0 := H;
+	Km1 := F;
+	Km2 := D;
+	Km3 := B;
+
+	Kr := [Kr0,Kr1,Kr2,Kr3];
+	Km := [Km0,Km1,Km2,Km3];
+
+	return Kr,Km;
+
+end function;
