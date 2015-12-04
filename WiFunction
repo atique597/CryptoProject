@@ -1,0 +1,21 @@
+function Wi(K, Tr, Tm)
+	// lets assume that K is GF(2) a sequence of 256 bits
+	listOfOffsets := [i : i in [1..(256-32)] | i mod 8 eq 1];
+   	bricks := [K[i..(i+32)] : i in listOfOffsets];
+   	// K is 256 bits and each brick is 32 bits
+   	// 1=A, 2=B, 3=C, 4=D, 5=E, 6=F, 7=G, 8=H
+   	bricks[7] := bricks[6] + f1(bricks[7], Tr[1], Tm[1]);
+   	bricks[6] := bricks[6] + f2(bricks[7], Tr[2], Tm[2]);
+   	bricks[5] := bricks[5] + f3(bricks[6], Tr[3], Tm[3]);
+   	bricks[4] := bricks[4] + f1(bricks[4], Tr[4], Tm[4]);
+   	bricks[3] := bricks[3] + f2(bricks[4], Tr[5], Tm[5]);
+   	bricks[2] := bricks[2] + f3(bricks[3], Tr[6], Tm[6]);
+   	bricks[1] := bricks[1] + f1(bricks[2], Tr[7], Tm[7]);
+   	bricks[8] := bricks[8] + f2(bricks[1], Tr[8], Tm[8]);
+	// concat results in a single list
+	result := [];
+	for i in [1..8] do 
+		result cat:= bricks[i];
+	end for;
+   	return result;
+end function;
