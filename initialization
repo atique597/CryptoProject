@@ -1,0 +1,35 @@
+function init()
+	Cm := Floor(2^30 * Sqrt(2));
+	Mm := Floor(2^30 * Sqrt(3));
+	// Magma automatically cast those 16 based number into integers.
+	// so after the return if you need the number in hex form you have to
+	// write Cr:Hex or Mm:Hex
+	Cr := 19;
+	Mr := 17;
+	// TODO: maybe is better change the sape of this structure (24 buckets of 9 slots and not 9 buckets of 24 slots)
+	
+	// Tm := [[],[],[],[],[],[],[],[],[]]; // 9 slots
+	// Tr := [[],[],[],[],[],[],[],[],[]]; // 9 slots
+	// for i in [1..24] do // for 24 rounds
+	// 	for j in [1..9] do // contains 9 values
+	// 	   Tm[j] cat:= [Cm];
+    //        Cm := (Cm + Mm) mod 2^32;
+    //        Tr[j] cat:= [Cr];
+    //        Cr := (Cr + Mr) mod 32;
+	// 	end for;
+	// end for;
+
+	Tm := [[] : i in [1..24]]; // 9 slots
+	Tr := [[] : i in [1..24]]; // 9 slots
+	for i in [1..24] do // for 24 rounds
+		for j in [1..9] do // contains 9 values
+		   Tm[i] cat:= [Cm];
+           Cm := (Cm + Mm) mod 2^32;
+           Tr[i] cat:= [Cr];
+           Cr := (Cr + Mr) mod 32;
+		end for;
+	end for;
+
+
+	return Tm,Tr;
+end function;
