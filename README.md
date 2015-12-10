@@ -1,4 +1,4 @@
-#Cryptography Project for the course Algebraic Cryptography 
+#Project for the course Algebraic Cryptography 
 ============
 
 ### CAST-256:
